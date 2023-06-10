@@ -44,13 +44,6 @@ def calculate_grid_dimensions(window_width: int,
         int(window_height / half_cell_number)
 
 
-def create_grid_cells(window_width: int,
-                      window_height: int,
-                      cell_number: int) -> None:
-    """Creates the grid cells that can hold entities."""
-    ...
-
-
 def draw_grid(screen,
               window_width: int,
               window_height: int,
