@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Optional, Tuple
 
 import numpy as np
 
@@ -46,7 +46,8 @@ def calculate_grid_dimensions(*args) -> Tuple:
     return (args[-1], args[-1], *calculate_cell_dimensions(*args))
 
 
-def create_grid(*args) -> None:
+# TODO: Work in progress, add here the proper adding of entities.
+def create_grid(*args, kind: Optional[str] = "random") -> None:
     """Creates the grid cells that can hold entities.
 
     Parameters
@@ -62,7 +63,10 @@ def create_grid(*args) -> None:
     -------
     grid : numpy.ndarray
     """
-    return np.zeros(calculate_grid_dimensions(*args)).flatten()
+    shape = np.zeros(calculate_grid_dimensions(*args)).flatten().shape
+    if kind == "random":
+        grid = np.random.randint(2, size=shape)
+    return grid
 
 
 def get_2d_grid(grid: np.ndarray, *args) -> np.ndarray:
@@ -122,6 +126,8 @@ def relate_2d_to_1d_grid_indices(quadrant_number: int,
     return np.ravel_multi_index(indices, shape_2d)
 
 
+
+
 def get_entity_grid_coordinates(entity) -> Tuple:
     ...
 
@@ -131,8 +137,7 @@ def add_entity_to_grid() -> None:
 
 
 if __name__ == "__main__":
-    args = (1024, 640, 4)
+    args = (8, 8, 4)
     grid_1d = create_grid(*args)
     grid_2d = get_2d_grid(grid_1d, *args)
-    test = relate_2d_to_1d_grid_indices(4, 20, 40, grid_2d, *args)
-    print(test)
+    print(grid_1d)
