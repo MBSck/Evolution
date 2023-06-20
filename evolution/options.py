@@ -8,5 +8,4 @@ OPTIONS["screen.width"] = 1024
 OPTIONS["screen.height"] = 640
 
 # Note: Grid
-# Note: Cell number (NxN) will be rounded down to next even power of 2
-OPTIONS["grid.cell_number"] = 128
+OPTIONS["grid.cells_per_side"] = 16
