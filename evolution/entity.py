@@ -1,5 +1,14 @@
 from typing import Self, Tuple
 from random import random as rnd
+from dataclasses import dataclass
+
+
+@dataclass
+class Gene:
+    name: str
+    value: int
+    description: str
+    mutation_rate: float
 
 
 class Entity:
@@ -12,7 +21,7 @@ class Entity:
                  speed: int,
                  birth_rate: int,
                  size: int) -> None:
-        self.age = age
+        self._age = age
         self.max_age = age
         self.position = position
         self.color = color
@@ -24,6 +33,14 @@ class Entity:
         self.size = size
         #genes defines variables changable through mutation & passed on to children, perhaps better implemented with dict?
         self.genes = ["max_age", "max_energy", "color", "speed", "birth_rate", "size"]
+        self.start_genes = [100, 100, "red", 1, 1, 1]
+        self.attributes = dict(zip(self.genes, self.start_genes))
+
+    @property
+    def speed(self):
+        if self._speed is None:
+            (1 / self.size**3)*self._speed
+        return self._speed
 
         #other options: vision (distance/angle), other senses
         #source of food/energy
