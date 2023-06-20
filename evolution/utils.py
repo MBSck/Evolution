@@ -1,27 +1,4 @@
-from typing import Tuple, Optional
-
-import numpy as np
 import pygame
-
-
-def calculate_grid_dimensions(window_width: int,
-                              window_height: int,
-                              cells_per_side: int) -> Tuple[int, int]:
-    """Calculates the number of rows and columns of the grid
-    from the set resolution dependent on the number of cells.
-
-    Parameters
-    ----------
-    window_width : int
-    window_height : int
-    cells_per_side : int
-
-    Returns
-    -------
-    grid_size : Tuple[int, int]
-    """
-    return window_width // cells_per_side,\
-        window_height // cells_per_side
 
 
 def draw_grid(screen,
